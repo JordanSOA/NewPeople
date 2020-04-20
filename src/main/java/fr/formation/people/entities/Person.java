@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Table(name = "persons")
 public class Person {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
@@ -17,6 +16,11 @@ public class Person {
     private String lastName;
     @Column(nullable = false)
     private LocalDate birthdate;
+
+
+    @ManyToOne
+    @JoinColumn(nullable = true)
+    private Address address;
 
     public Person() {
     }
@@ -51,6 +55,14 @@ public class Person {
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
