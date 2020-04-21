@@ -18,7 +18,7 @@ public class Person {
     private LocalDate birthdate;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = true)
     private Address address;
 

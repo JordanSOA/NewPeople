@@ -4,20 +4,17 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class UserCreateDTO {
 
     @Size(min = 1, max = 254)
-    @NotNull
+    @NotEmpty
     @Email
     private String name;
 
-    @Size(min = 8)
-    @NotBlank
+    @Size(min = 8, max = 20)
+    @NotEmpty
     private String password;
 
     public UserCreateDTO() {

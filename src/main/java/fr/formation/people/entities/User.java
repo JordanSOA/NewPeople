@@ -12,14 +12,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 254)
+
+    @Column(nullable = false, length = 254, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 60)
     private String password;
 
-    @OneToOne
-    @JoinColumn(nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "roles")
     private Role role;
 
     public User() {
