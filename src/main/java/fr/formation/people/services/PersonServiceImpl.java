@@ -3,7 +3,9 @@ package fr.formation.people.services;
 
 import fr.formation.people.dtos.PersonCreateDTO;
 import fr.formation.people.dtos.PersonDTO;
+import fr.formation.people.entities.Address;
 import fr.formation.people.entities.Person;
+import fr.formation.people.repositories.AddressRepository;
 import fr.formation.people.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +19,19 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
+
     @Override
     public void create(PersonCreateDTO dto) {
         Person person = new Person();
         person.setFirstName(dto.getFirstName());
         person.setLastName(dto.getLastName());
         person.setBirthdate(dto.getBirthdate());
+        if (null != dto.getAddressId()) {
+        person.setAddress( addressRepository.getOne(dto.getAddressId()));
+        }
         personRepository.save(person);
     }
 

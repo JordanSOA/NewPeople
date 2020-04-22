@@ -1,6 +1,7 @@
 package fr.formation.people.dtos;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,9 @@ public class PersonCreateDTO {
     @DateTimeFormat(pattern="MM/dd/yyyy")
     @NotNull @Past
     private LocalDate birthdate;
+
+    @Nullable
+    private Long addressId;
 
     public PersonCreateDTO() {
     }
@@ -44,6 +48,15 @@ public class PersonCreateDTO {
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
+    }
+
+    @Nullable
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
     @Override

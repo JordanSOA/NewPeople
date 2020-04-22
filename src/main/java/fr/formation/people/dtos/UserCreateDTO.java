@@ -39,8 +39,7 @@ public class UserCreateDTO {
     @Override
     public String toString() {
         return "UserCreateDTO{" +
-                "username='" + name + '\'' +
-                ", password='" + password + '\'' +
+                "name='" + name + '\'' +
                 '}';
     }
 }

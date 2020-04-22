@@ -17,4 +17,5 @@ public interface AddressService {
 
     List<AddressDTO> getAll();
 
+    List<AddressDTO> getAllSearchCity(String city);
 }

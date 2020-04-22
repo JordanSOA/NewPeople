@@ -10,6 +10,8 @@ public class AddressDTO {
 
     private String zipCode;
 
+    private Long idFromDb;
+
     public AddressDTO() {
         // Default no-args constructor
     }
@@ -44,6 +46,14 @@ public class AddressDTO {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public Long getIdFromDb() {
+        return idFromDb;
+    }
+
+    public void setIdFromDb(Long idFromDb) {
+        this.idFromDb = idFromDb;
     }
 
     @Override

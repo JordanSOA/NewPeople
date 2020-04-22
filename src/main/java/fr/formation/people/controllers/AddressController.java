@@ -43,4 +43,9 @@ public class AddressController {
     public List<AddressDTO> getAll() {
         return service.getAll();
     }
+
+    @GetMapping("/searchByCityName/{city}")
+    public List<AddressDTO> getAllSearchCity(@PathVariable("city") String city){
+        return service.getAllSearchCity(city);
+    }
 }

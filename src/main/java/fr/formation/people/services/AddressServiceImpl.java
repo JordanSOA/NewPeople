@@ -48,6 +48,7 @@ public class AddressServiceImpl implements AddressService {
 
     private AddressDTO convertEntityToDto(Address address){
         AddressDTO dto = new AddressDTO();
+        dto.setIdFromDb(address.getId());
         dto.setStreet(address.getStreet());
         dto.setCity(address.getCity());
         dto.setZipCode(address.getZipCode());
@@ -62,5 +63,11 @@ public class AddressServiceImpl implements AddressService {
         address.setZipCode(AddressCreateDTO.getZipCode());
         address.setCountry(AddressCreateDTO.getCountry());
         return address;
+    }
+
+    @Override
+    public List<AddressDTO> getAllSearchCity(String city) {
+        List<Address> addressByCityList = addressRepository.findByCityContainsIgnoreCase(city);
+        return addressByCityList.stream().map(this::convertEntityToDto).collect(Collectors.toList());
     }
 }
